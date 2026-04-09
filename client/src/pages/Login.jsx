@@ -57,8 +57,9 @@ const Login = () => {
         onClick={() => navigate('/')}
         src={assets.logo}
         alt="Logo"
-        className='absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer hover:opacity-80 transition-opacity'
+        className='absolute left-4 sm:left-24 top-4 sm:top-6 w-28 sm:w-32 cursor-pointer hover:opacity-80 transition-opacity'
       />
+
 
       <div className='bg-slate-900 p-10 rounded-lg shadow-2xl w-full sm:w-96 text-indigo-300 text-sm border border-white/10 backdrop-blur-sm'>
 
@@ -105,12 +106,20 @@ const Login = () => {
               required />
           </div>
 
-          <p
-            onClick={() => navigate('/reset-password')}
-            className='text-right text-xs text-indigo-400 hover:text-indigo-300 cursor-pointer transition-colors'
-          >
-            Forgot password?
-          </p>
+          {state === 'Login' ? (
+            <p
+              onClick={() => navigate('/reset-password')}
+              className='text-right text-xs text-indigo-400 hover:text-indigo-300 cursor-pointer transition-colors'
+            >
+              Forgot password?
+            </p>
+          ) : (
+            <div className='flex items-start gap-2 text-xs text-gray-400 mt-2'>
+              <input type="checkbox" className='mt-0.5' checked />
+              <p>By creating an account, you agree to our <span className='text-indigo-400 underline cursor-pointer'>Terms of service</span> and <span className='text-indigo-400 underline cursor-pointer'>Privacy policy</span>.</p>
+            </div>
+          )}
+
 
           <button className='w-full py-3 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700 text-white font-semibold shadow-lg hover:shadow-indigo-500/20 active:scale-[0.98] transition-all mt-2'>
             {state}
